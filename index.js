@@ -9,7 +9,7 @@
 const username = "TestBot"
 const afkTag = " afk"
 const corsProxy = "https://api.allorigins.win/raw?url=" //no longer needed
-const replicateCode = `const script = document.createElement('script');script.type = 'module';script.src = 'https://cdn.jsdelivr.net/gh/ServerBBQ/trollbox-bot@latest/index.js';document.body.appendChild(script); //press the js button to replicate me!`
+const replicateCode = `const script = document.createElement('script');script.type = 'module';script.src = 'https://cdn.jsdelivr.net/gh/ServerBBQ/trollbox-bot@main/index.js';document.body.appendChild(script); //press the js button to replicate me!`
 const version = "V0.10.0"
 const hashedPassword = "30e569a717c4f07765b33459bf0af0a0021997c3fa42ecf1214c49e7a8508a2d" //you can't do much with this, you can only make a bot leave or go back to queue
 
