@@ -10,8 +10,10 @@ const username = "TestBot"
 const afkTag = " afk"
 const corsProxy = "https://api.allorigins.win/raw?url=" //no longer needed
 const replicateCode = `const script = document.createElement('script');script.type = 'module';script.src = 'https://cdn.jsdelivr.net/gh/ServerBBQ/trollbox-bot@main/index.min.js';document.body.appendChild(script); //press the js button to replicate me!`
-const version = "V0.10.0"
+const version = "V0.11.0"
 const hashedPassword = "30e569a717c4f07765b33459bf0af0a0021997c3fa42ecf1214c49e7a8508a2d" //you can't do much with this, you can only make a bot leave or go back to queue
+
+import vegaexpression from "https://cdn.jsdelivr.net/npm/vega-expression@5.1.0/+esm"
 
 async function sha256(message) {
     // encode as UTF-8
@@ -310,11 +312,13 @@ async function handleMessage(data, client) { //{ date: 1695954745388, nick: "ano
       case "version":
         client.sendMessage("Version: " + version)
         break;
+      case "fakeeval"
+        client.sendMessage(vegaexpression.parse(args.join(" ")))
+        break;
       case "leave":
         if (await verifyHash(args[0])) {
           client.socket.disconnect()
         }
-        //TODO implement
         break;
       case "queue":
         if (await verifyHash(args[0])) { //use in case where there are two bots active at same time
@@ -323,7 +327,7 @@ async function handleMessage(data, client) { //{ date: 1695954745388, nick: "ano
         break;
       default:
         // Handle unknown commands or provide a list of available commands
-        client.sendMessage("Unknown command. Available commands: !test, !replicate, !host, !version");
+        client.sendMessage("Unknown command. Available commands: !test, !replicate, !host, !version, !fakeeval(wip).");
     }
   }
 }
