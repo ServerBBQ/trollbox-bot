@@ -13,8 +13,6 @@ const replicateCode = `const script = document.createElement('script');script.ty
 const version = "V0.11.1"
 const hashedPassword = "30e569a717c4f07765b33459bf0af0a0021997c3fa42ecf1214c49e7a8508a2d" //you can't do much with this, you can only make a bot leave or go back to queue
 
-import vegaexpression from "https://cdn.jsdelivr.net/npm/vega-expression@5.1.0/+esm"
-
 async function sha256(message) {
     // encode as UTF-8
     const msgBuffer = new TextEncoder().encode(message);                    
@@ -312,9 +310,6 @@ async function handleMessage(data, client) { //{ date: 1695954745388, nick: "ano
       case "version":
         client.sendMessage("Version: " + version)
         break;
-      case "fakeeval":
-        client.sendMessage(vegaexpression.parse(args.join(" ")))
-        break;
       case "leave":
         if (await verifyHash(args[0])) {
           client.socket.disconnect()
@@ -327,7 +322,7 @@ async function handleMessage(data, client) { //{ date: 1695954745388, nick: "ano
         break;
       default:
         // Handle unknown commands or provide a list of available commands
-        client.sendMessage("Unknown command. Available commands: !test, !replicate, !host, !version, !fakeeval(wip).");
+        client.sendMessage("Unknown command. Available commands: !test, !replicate, !host, !version");
     }
   }
 }
